@@ -10,10 +10,10 @@ def reduce_graph(graph):
         R(G) -> G'
     """
     G = graph.copy()
-    all_nodes = G.nodes()
+    all_nodes = G.nodes() 
     G.add_node('source')
     G.add_node('sink')
-    for n in all_nodes:
+    for n in all_nodes: # Note that all_nodes include 'source' and 'sink' in this loop. NetworkX 2.6.3. 11/29/2021 HY
         demand = G.node[n]['demand']
         if demand < 0:
             G.add_edge('source', n, capacity=-demand)
